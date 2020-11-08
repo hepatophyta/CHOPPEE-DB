@@ -36,7 +36,12 @@ const Menu = () => {
 
 export const Sidebar = () => {
   return (
-    <div className="d-flex flex-column align-items-center p-2" id="sidebar-wrapper">
+    <div style={{ width: '17rem' }}>
+      <div 
+        className="d-flex flex-column align-items-center p-2" 
+        style={{ width: '14rem' }}
+        id="sidebar-wrapper"
+      >
 			<div>&nbsp;</div>
 			<div>&nbsp;</div>
 			<div>&nbsp;</div>
@@ -70,5 +75,6 @@ export const Sidebar = () => {
 				</div>
 			</div>
 		</div>
+    </div>
   )
 }

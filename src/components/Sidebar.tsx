@@ -1,4 +1,38 @@
-import React from 'react'
+import React, { FC } from 'react'
+import { useRouter } from 'next/router'
+
+interface IMenuButton {
+  href: string
+  children: string
+}
+
+const MenuButton: FC<IMenuButton> = ({ href, children }) => {
+  const router = useRouter()
+
+  const renderButton = (pathname: string): string => {
+    return 'nav-link-menu p-2 mt-3' + (router.pathname === `/${pathname}` && ' active')
+  }
+
+  return (
+    <a href={href} className={renderButton(href)}>
+      <span data-feather={href}/> 
+      {children}
+    </a>
+  )
+}
+
+const Menu = () => {
+  return (
+    <div className="nav-item">
+      <MenuButton href='home'>Home</MenuButton>
+      <a href="customer.html" className="nav-link-menu p-2 mt-3">
+        <span data-feather="users"/> 
+        Customers
+      </a>
+      <MenuButton href='products'>Products</MenuButton>
+    </div>
+  )
+}
 
 export const Sidebar = () => {
   return (
@@ -13,11 +47,7 @@ export const Sidebar = () => {
 			<div>&nbsp;</div>
 			<h1 style={{ color: 'white' }}>Choppee</h1>
 			<div>&nbsp;</div>
-			<div className="nav-item">
-				<a href="home.html" className="nav-link-menu p-2 mt-3"><span data-feather="home"></span> Home</a>
-				<a href="customer.html" className="nav-link-menu p-2 mt-3"><span data-feather="users"></span> Customers</a>
-				<a href="#" className="nav-link-menu active p-2 mt-3"><span data-feather="shopping-bag"></span> Products</a>
-			</div>
+      <Menu />
 			<div className="mt-auto">
 				<div className="d-flex flex-column">
 				<a style={{ color: '#c3cfe2' }} href="statusUpdation.html">Sales Management</a>

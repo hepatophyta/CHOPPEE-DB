@@ -10,7 +10,7 @@ const MenuButton: FC<IMenuButton> = ({ href, children }) => {
   const router = useRouter()
 
   const renderButton = (pathname: string): string => {
-    return 'nav-link-menu p-2 mt-3' + (router.pathname === `/${pathname}` && ' active')
+    return 'nav-link-menu p-2 mt-3' + (router.pathname === `/${pathname}` ? ' active' : '')
   }
 
   return (
